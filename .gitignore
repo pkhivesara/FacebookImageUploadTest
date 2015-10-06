@@ -1,0 +1,16 @@
+.gradle
+/gradle
+.name
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+
+#Log Files
+*.log
+
+#Jetbrain files
+*.iml
+.idea/
