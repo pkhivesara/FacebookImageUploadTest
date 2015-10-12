@@ -1,24 +1,17 @@
 # OfferUp Android Challenge #
 
 Build a simple application that allows a user to following sequential process:
-<ol> 
-	<li>Login/Logout with their Facebook account.</li>
-	<li>Select an image through either the Camera or the Gallery(or equivilent).</li>
-	<li>Upload the image to our Facebook test account.</li>
-</ol> 
+1. Login/Logout with their Facebook account.
+2. Select an image through either the Camera or the Gallery(or equivalent).
+3. Upload the image to our Facebook test account.
 
 ### Android Challenge Instructions ###
 
-<ol>
-<li>The base Android project is already setup.</li>
+1. The base Android project is already setup.
 
 * Add any libraries as desired
 * Ensure that the project is build with the included gradlew executable
 * Deployment instructions
-
-<li></li>
-
-</ol>
 
 ### Who do I talk to? ###
 
