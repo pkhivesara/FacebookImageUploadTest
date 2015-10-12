@@ -2,18 +2,23 @@
 
 Build a simple application that allows a user to following sequential process:
 <ol> 
-	<li>Login/Logout with their Facebook account</li>
-	<li>Select an image through either the Camera or the Gallery(or equivilent)</li>
-	<li>Upload the image to our Facebook test account</li>
+	<li>Login/Logout with their Facebook account.</li>
+	<li>Select an image through either the Camera or the Gallery(or equivilent).</li>
+	<li>Upload the image to our Facebook test account.</li>
 </ol> 
 
-### How do I get set up? ###
+### Android Challenge Instructions ###
 
-The base Android project is already setup.
+<ol>
+<li>The base Android project is already setup.</li>
 
 * Add any libraries as desired
 * Ensure that the project is build with the included gradlew executable
 * Deployment instructions
+
+<li></li>
+
+</ol>
 
 ### Who do I talk to? ###
 
