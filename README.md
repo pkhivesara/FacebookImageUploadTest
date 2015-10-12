@@ -1,6 +1,6 @@
 # OfferUp Android Challenge #
 
-Build a simple application that allows a user to following sequential process:
+Build a simple application that allows a user to complete following sequential process:
 
 1. Login/Logout with their Facebook account.
 
@@ -10,11 +10,21 @@ Build a simple application that allows a user to following sequential process:
 
 ### Android Challenge Instructions ###
 
-1. The base Android project is already setup.
-
+* The base Android project is already setup with Gradle.
 * Add any libraries as desired
 * Ensure that the project is build with the included gradlew executable
 * Deployment instructions
+
+### Screens ###
+
+#### Main Screen ####
+
+This screen shows after the app starts. 
+The ‘Upload Images’ button is not enabled until the user has logged in with Facebook. 
+
+
+
+
 
 ### Who do I talk to? ###
 
