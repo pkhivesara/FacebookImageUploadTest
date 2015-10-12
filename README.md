@@ -3,7 +3,9 @@
 Build a simple application that allows a user to following sequential process:
 
 * Login/Logout with their Facebook account.
-2. Select an image through either the Camera or the Gallery(or equivalent).
+
+1. Select an image through either the Camera or the Gallery(or equivalent).
+
 3. Upload the image to our Facebook test account.
 
 ### Android Challenge Instructions ###
