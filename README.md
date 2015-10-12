@@ -1,29 +1,21 @@
-# README #
+# OfferUp Android Challenge #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Build a simple application that allows a user to following sequential process:
+<ol> 
+	<li>Login/Logout with their Facebook account</li>
+	<li>Select an image through either the Camera or the Gallery(or equivilent)</li>
+	<li>Upload the image to our Facebook test account</li>
+</ol> 
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
+The base Android project is already setup.
+
+* Add any libraries as desired
+* Ensure that the project is build with the included gradlew executable
 * Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* For any questions, please email challenge@offerupnow.com
+* For immediate assistance, call 206-478-4160
