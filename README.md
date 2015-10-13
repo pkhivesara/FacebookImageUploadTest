@@ -20,8 +20,9 @@ Build a simple application that allows a user to complete following sequential p
 #### Main Screen ####
 
 This screen shows after the app starts. 
-The ‘Upload Images’ button is not enabled until the user has logged in with Facebook. 
+The ‘Upload Image’ button is not enabled until the user has logged in with Facebook. 
 
+![Screenshot_20151012-184725.png](https://bitbucket.org/repo/oyee85/images/3111477370-Screenshot_20151012-184725.png)
 
 
 
