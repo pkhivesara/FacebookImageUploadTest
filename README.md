@@ -39,6 +39,13 @@ Build a simple application that allows a user to complete following sequential p
 
 ![Screenshot_20151012-184700.png](https://bitbucket.org/repo/oyee85/images/3432495446-Screenshot_20151012-184700.png)
 
+#### Upload Confirmation Screen ####
+
+* Show this screen after the upload has completed
+* The screen will show one button “Done” which will take the user back to the Main Screen to start the process again.
+
+![Screenshot_20151012-184752.png](https://bitbucket.org/repo/oyee85/images/61502190-Screenshot_20151012-184752.png)
+
 ### Who do I talk to? ###
 
 * For any questions, please email challenge@offerupnow.com
