@@ -35,7 +35,9 @@ Build a simple application that allows a user to complete following sequential p
 * The image is then displayed cropped inside the same area that was occupied by the + button. 
 * Clicking the image also displays the chooser
 
+![Screenshot_20151012-184717.png](https://bitbucket.org/repo/oyee85/images/1626013789-Screenshot_20151012-184717.png)
 
+![Screenshot_20151012-184700.png](https://bitbucket.org/repo/oyee85/images/3432495446-Screenshot_20151012-184700.png)
 
 ### Who do I talk to? ###
 
