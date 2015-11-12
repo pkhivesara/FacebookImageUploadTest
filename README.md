@@ -25,7 +25,7 @@ Build a simple application that allows a user to complete following sequential p
 * The ‘Upload Image’ button is not enabled until the user has logged in with Facebook. 
 
 
-![Screenshot_20151012-184725.png](https://bitbucket.org/repo/oyee85/images/3111477370-Screenshot_20151012-184725.png)
+![pic1.png](https://bitbucket.org/repo/oyee85/images/1416646019-pic1.png)
 
 #### Image Upload Screen ####
 
@@ -35,16 +35,16 @@ Build a simple application that allows a user to complete following sequential p
 * The image is then displayed cropped inside the same area that was occupied by the + button. 
 * Clicking the image also displays the chooser
 
-![Screenshot_20151012-184717.png](https://bitbucket.org/repo/oyee85/images/1626013789-Screenshot_20151012-184717.png)
+image2
 
-![Screenshot_20151012-184700.png](https://bitbucket.org/repo/oyee85/images/3432495446-Screenshot_20151012-184700.png)
+image3
 
 #### Upload Confirmation Screen ####
 
 * Show this screen after the upload has completed
 * The screen will show one button “Done” which will take the user back to the Main Screen to start the process again.
 
-![Screenshot_20151012-184752.png](https://bitbucket.org/repo/oyee85/images/61502190-Screenshot_20151012-184752.png)
+image4
 
 ### Who do I talk to? ###
 
