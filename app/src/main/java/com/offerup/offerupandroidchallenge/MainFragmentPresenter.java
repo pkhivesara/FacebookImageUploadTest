@@ -54,25 +54,29 @@ public class MainFragmentPresenter {
             @Override
             public void onClick(DialogInterface dialog, int item) {
                 if (items[item].equals("Camera")) {
-
-
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(getTempFile(fragment)));
-                    fragment.startActivityForResult(intent, 1);
+                    startCamera(fragment);
                 } else if (items[item].equals("Gallery")) {
-                    Intent intent = new Intent(
-                            Intent.ACTION_PICK,
-                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    intent.setType("image/*");
-                    fragment.startActivityForResult(
-                            Intent.createChooser(intent, "Select File"),
-                            2);
-                } else if (items[item].equals("Cancel")) {
-                    dialog.dismiss();
+                    showGallery(fragment);
                 }
             }
         });
         mainFragmentPresenterInterface.showImagePickerDialog(builder);
+    }
+
+    private void showGallery(Fragment fragment) {
+        Intent intent = new Intent(
+                Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/*");
+        fragment.startActivityForResult(
+                Intent.createChooser(intent, "Select File"),
+                2);
+    }
+
+    private void startCamera(Fragment fragment) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(getTempFile(fragment)));
+        fragment.startActivityForResult(intent, 1);
     }
 
 

@@ -75,14 +75,11 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
         callbackManager = CallbackManager.Factory.create();
         mainFragmentPresenter = new MainFragmentPresenter(this);
         uploadImageButton.setText(R.string.upload_image);
+
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                loginButton.setVisibility(View.GONE);
-                textView.setText(R.string.post_some_pictures);
-                uploadImageButton.setText(R.string.upload_to_facebook);
-                choosenImageView.setVisibility(View.VISIBLE);
-                uploadImageButton.setEnabled(false);
+                changeUIElementsState();
             }
 
             @Override
@@ -100,6 +97,14 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
         uploadImageButton.setEnabled(false);
 
         return result;
+    }
+
+    private void changeUIElementsState() {
+        loginButton.setVisibility(View.GONE);
+        textView.setText(R.string.post_some_pictures);
+        uploadImageButton.setText(R.string.upload_to_facebook);
+        choosenImageView.setVisibility(View.VISIBLE);
+        uploadImageButton.setEnabled(false);
     }
 
     public FacebookCallback<Sharer.Result> shareCallback = new FacebookCallback<Sharer.Result>() {
