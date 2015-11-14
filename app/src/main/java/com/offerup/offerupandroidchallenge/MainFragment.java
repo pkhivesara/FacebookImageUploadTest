@@ -72,6 +72,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
 
     Bitmap bitmapForFacebookUpload;
     CallbackManager callbackManager;
+    String uri;
     MainFragmentPresenter mainFragmentPresenter;
 
     @Override
@@ -136,14 +137,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
         }
     };
 
-    //it will return /sdcard/image.tmp
-    private File getTempFile(Context context) {
-        final File path = new File(Environment.getExternalStorageDirectory(), context.getPackageName());
-        if (!path.exists()) {
-            path.mkdir();
-        }
-        return new File(path, "image.tmp");
-    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -157,20 +151,13 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
                     //  String selectedImage = (String) data.getExtras().get(MediaStore.EXTRA_OUTPUT);
                     uploadImageButton.setEnabled(true);
 
-                    final File file = getTempFile(getActivity());
-                    try {
-                        captureBmp = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), Uri.fromFile(file));
-                        // do whatever you want with the bitmap (Resize, Rename, Add To Gallery, etc)
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                  // Uri uri = data.getData();
+                    Picasso.with(getActivity()).load(uri).resize(choosenImageView.getMeasuredWidth(), choosenImageView.getMeasuredHeight()).centerCrop().into(choosenImageView);
+
                     break;
                 }
 
 
-//                    Picasso.with(getActivity()).load(captureBmp).resize(choosenImageView.getMeasuredWidth(), choosenImageView.getMeasuredHeight()).centerCrop().into(choosenImageView);
 
                 choosenImageView.setImageBitmap(captureBmp);
 
@@ -217,5 +204,10 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
     @Override
     public void showImagePickerDialog(AlertDialog.Builder alertDialog) {
         alertDialog.show();
+    }
+
+    @Override
+    public void setURI(String uri) {
+        this.uri = uri;
     }
 }

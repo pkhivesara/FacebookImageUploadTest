@@ -9,4 +9,7 @@
 	<string name="congrats">!!! Congrats !!!</string>
 	<string name="post_complete">You\'re done! :D</string>
 	<string name="done">DONE</string>
+	<string name="camera">Camera</string>
+	<string name="gallery">Gallery</string>
+	<string name="select_photo">Select Photo</string>
 </resources>
