@@ -31,9 +31,6 @@ import com.facebook.share.model.SharePhotoContent;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 
 public class MainFragment extends Fragment implements MainFragmentPresenter.MainFragmentPresenterInterface {
@@ -58,6 +55,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
     public void clearImage() {
         choosenImageView.setImageBitmap(null);
         doneButton.setVisibility(View.GONE);
+        uploadImageButton.setEnabled(false);
     }
 
     @OnClick(R.id.choosenImageView)
@@ -94,7 +92,6 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
 
             @Override
             public void onCancel() {
-
             }
 
             @Override
@@ -128,12 +125,10 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
 
         @Override
         public void onCancel() {
-
         }
 
         @Override
         public void onError(FacebookException e) {
-
         }
     };
 
@@ -146,23 +141,14 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
         Bitmap captureBmp = null;
         switch (requestCode) {
             case 1:
-                if (resultCode == Activity.RESULT_OK) {
+                if (resultCode == Activity.RESULT_OK && uri!=null) {
                     doneButton.setVisibility(View.VISIBLE);
-                    //  String selectedImage = (String) data.getExtras().get(MediaStore.EXTRA_OUTPUT);
                     uploadImageButton.setEnabled(true);
-
-                  // Uri uri = data.getData();
                     Picasso.with(getActivity()).load(uri).resize(choosenImageView.getMeasuredWidth(), choosenImageView.getMeasuredHeight()).centerCrop().into(choosenImageView);
 
-                    break;
                 }
-
-
-
-                choosenImageView.setImageBitmap(captureBmp);
-
-
                 break;
+
             case 2:
                 if (resultCode == Activity.RESULT_OK) {
                     Uri selectedImage;
@@ -186,12 +172,10 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
 
         @Override
         public void onBitmapFailed(Drawable errorDrawable) {
-
         }
 
         @Override
         public void onPrepareLoad(Drawable placeHolderDrawable) {
-
         }
 
     };
