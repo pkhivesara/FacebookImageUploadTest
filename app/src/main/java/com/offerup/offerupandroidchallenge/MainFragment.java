@@ -38,6 +38,9 @@ import java.io.IOException;
 
 public class MainFragment extends Fragment implements MainFragmentPresenter.MainFragmentPresenterInterface {
 
+    @Bind(R.id.doneButton)
+    ImageView doneButton;
+
     @Bind(R.id.uploadImageButton)
     Button uploadImageButton;
 
@@ -50,6 +53,12 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
     @Bind(R.id.login_button)
     LoginButton loginButton;
 
+
+    @OnClick(R.id.doneButton)
+    public void clearImage() {
+        choosenImageView.setImageBitmap(null);
+        doneButton.setVisibility(View.GONE);
+    }
 
     @OnClick(R.id.choosenImageView)
     public void showImagePickerDialog() {
@@ -104,6 +113,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
         textView.setText(R.string.post_some_pictures);
         uploadImageButton.setText(R.string.upload_to_facebook);
         choosenImageView.setVisibility(View.VISIBLE);
+
         uploadImageButton.setEnabled(false);
     }
 
@@ -127,13 +137,13 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
     };
 
     //it will return /sdcard/image.tmp
-    private File getTempFile(Context context){
-    final File path = new File( Environment.getExternalStorageDirectory(), context.getPackageName() );
-    if(!path.exists()){
-        path.mkdir();
+    private File getTempFile(Context context) {
+        final File path = new File(Environment.getExternalStorageDirectory(), context.getPackageName());
+        if (!path.exists()) {
+            path.mkdir();
+        }
+        return new File(path, "image.tmp");
     }
-    return new File(path, "image.tmp");
-}
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -143,13 +153,13 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
         switch (requestCode) {
             case 1:
                 if (resultCode == Activity.RESULT_OK) {
-
-                  //  String selectedImage = (String) data.getExtras().get(MediaStore.EXTRA_OUTPUT);
+                    doneButton.setVisibility(View.VISIBLE);
+                    //  String selectedImage = (String) data.getExtras().get(MediaStore.EXTRA_OUTPUT);
                     uploadImageButton.setEnabled(true);
 
                     final File file = getTempFile(getActivity());
                     try {
-                        captureBmp = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), Uri.fromFile(file) );
+                        captureBmp = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), Uri.fromFile(file));
                         // do whatever you want with the bitmap (Resize, Rename, Add To Gallery, etc)
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -162,7 +172,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
 
 //                    Picasso.with(getActivity()).load(captureBmp).resize(choosenImageView.getMeasuredWidth(), choosenImageView.getMeasuredHeight()).centerCrop().into(choosenImageView);
 
-                     choosenImageView.setImageBitmap(captureBmp);
+                choosenImageView.setImageBitmap(captureBmp);
 
 
                 break;
@@ -170,6 +180,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
                 if (resultCode == Activity.RESULT_OK) {
                     Uri selectedImage;
                     selectedImage = data.getData();
+                    doneButton.setVisibility(View.VISIBLE);
                     Picasso.with(getActivity()).load(selectedImage).resize(choosenImageView.getMeasuredWidth(), choosenImageView.getMeasuredHeight()).centerCrop().into(target);
                     uploadImageButton.setEnabled(true);
 
