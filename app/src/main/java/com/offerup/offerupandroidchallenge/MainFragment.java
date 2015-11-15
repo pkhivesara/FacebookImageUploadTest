@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
@@ -71,7 +72,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
 
     Bitmap bitmapForFacebookUpload;
     CallbackManager callbackManager;
-    String uri;
+    Uri uri;
     MainFragmentPresenter mainFragmentPresenter;
 
     @Override
@@ -143,6 +144,19 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
         }
     };
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable("file_uri",uri);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if(savedInstanceState!=null){
+            uri = savedInstanceState.getParcelable("file_uri");
+        }
+    }
 
     @Override
     public void onDestroyView() {
@@ -206,7 +220,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
     }
 
     @Override
-    public void setURI(String uri) {
+    public void setURIForCameraInstance(Uri uri) {
         this.uri = uri;
     }
 }

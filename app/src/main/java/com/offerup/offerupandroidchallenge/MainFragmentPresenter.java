@@ -78,7 +78,7 @@ public class MainFragmentPresenter {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         Uri uri= getOutputMediaFileUri();
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-        mainFragmentPresenterInterface.setURI(uri.toString());
+        mainFragmentPresenterInterface.setURIForCameraInstance(uri);
         fragment.startActivityForResult(intent, 1);
     }
 
@@ -91,8 +91,8 @@ public class MainFragmentPresenter {
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), "MyCameraApp");
 
-        if (! mediaStorageDir.exists()){
-            if (! mediaStorageDir.mkdirs()){
+        if (!mediaStorageDir.exists()){
+            if (!mediaStorageDir.mkdirs()){
                 Log.d("MyCameraApp", "failed to create directory");
                 return null;
             }
@@ -109,6 +109,6 @@ public class MainFragmentPresenter {
 
         void showImagePickerDialog(AlertDialog.Builder alertDialog);
 
-        void setURI(String uri);
+        void setURIForCameraInstance(Uri uri);
     }
 }
