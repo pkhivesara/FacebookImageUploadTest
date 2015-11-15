@@ -46,6 +46,7 @@ public class MainFragmentPresenter {
     public void createImagePickerDialog(final Fragment fragment) {
         final Activity activity = fragment.getActivity();
         final CharSequence[] items = {activity.getString(R.string.camera), activity.getString(R.string.gallery)};
+
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle(activity.getString(R.string.select_photo));
         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -58,6 +59,7 @@ public class MainFragmentPresenter {
                 }
             }
         });
+
         mainFragmentPresenterInterface.showImagePickerDialog(builder);
     }
 
@@ -66,9 +68,9 @@ public class MainFragmentPresenter {
                 Intent.ACTION_PICK,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
+
         fragment.startActivityForResult(
-                Intent.createChooser(intent, "Select File"),
-                2);
+                Intent.createChooser(intent, fragment.getActivity().getString(R.string.select_image)),2);
     }
 
     private void startCamera(Fragment fragment) {

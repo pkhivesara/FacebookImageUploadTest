@@ -20,6 +20,7 @@ import android.widget.*;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -31,7 +32,6 @@ import com.facebook.share.Sharer;
 import com.facebook.share.model.SharePhotoContent;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
-
 
 
 public class MainFragment extends Fragment implements MainFragmentPresenter.MainFragmentPresenterInterface {
@@ -80,15 +80,19 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
                              Bundle savedInstanceState) {
         View result = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, result);
-        ButterKnife.setDebug(true);
-        callbackManager = CallbackManager.Factory.create();
+        facebookSetup();
         mainFragmentPresenter = new MainFragmentPresenter(this);
-        uploadImageButton.setText(R.string.upload_image);
+        facebookLoginCallback();
+        initialUIElementsSetup();
 
+        return result;
+    }
+
+    private void facebookLoginCallback() {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                changeUIElementsState();
+                changeUIElementsStateOnSuccessfulFacebookLogin();
             }
 
             @Override
@@ -99,15 +103,21 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
             public void onError(FacebookException e) {
             }
         });
-
-        loginButton.setFragment(this);
-        textView.setText(R.string.offerup_challenge);
-        uploadImageButton.setEnabled(false);
-
-        return result;
     }
 
-    private void changeUIElementsState() {
+    private void initialUIElementsSetup() {
+        uploadImageButton.setText(R.string.upload_image);
+        textView.setText(R.string.offerup_challenge);
+        uploadImageButton.setEnabled(false);
+    }
+
+    private void facebookSetup() {
+        loginButton.setFragment(this);
+        AccessToken.setCurrentAccessToken(null);
+        callbackManager = CallbackManager.Factory.create();
+    }
+
+    private void changeUIElementsStateOnSuccessfulFacebookLogin() {
         loginButton.setVisibility(View.GONE);
         textView.setText(R.string.post_some_pictures);
         uploadImageButton.setText(R.string.upload_to_facebook);
@@ -130,9 +140,9 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
 
         @Override
         public void onError(FacebookException e) {
+            Log.d("###",e.toString());
         }
     };
-
 
 
     @Override
@@ -141,10 +151,10 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
         callbackManager.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case 1:
-                if (resultCode == Activity.RESULT_OK && uri!=null) {
+                if (resultCode == Activity.RESULT_OK && uri != null) {
                     doneButton.setVisibility(View.VISIBLE);
                     uploadImageButton.setEnabled(true);
-                    Picasso.with(getActivity()).load(uri).resize(choosenImageView.getMeasuredWidth(), choosenImageView.getMeasuredHeight()).centerCrop().into(choosenImageView);
+                    Picasso.with(getActivity()).load(uri).resize(choosenImageView.getMeasuredWidth(), choosenImageView.getMeasuredHeight()).centerCrop().into(target);
 
                 }
                 break;
@@ -153,9 +163,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
                 if (resultCode == Activity.RESULT_OK) {
                     Uri selectedImage;
                     selectedImage = data.getData();
-
                     Picasso.with(getActivity()).load(selectedImage).resize(choosenImageView.getMeasuredWidth(), choosenImageView.getMeasuredHeight()).centerCrop().into(target);
-
 
                 }
                 break;
