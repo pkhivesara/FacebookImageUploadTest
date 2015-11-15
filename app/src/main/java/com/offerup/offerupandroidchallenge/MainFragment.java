@@ -140,10 +140,15 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
 
         @Override
         public void onError(FacebookException e) {
-            Log.d("###",e.toString());
         }
     };
 
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Picasso.with(getActivity()).cancelRequest(target);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
