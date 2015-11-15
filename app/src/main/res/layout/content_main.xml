@@ -15,14 +15,15 @@
     <RelativeLayout android:layout_width="wrap_content"
                     android:id="@+id/additionalViews"
                     android:layout_centerInParent="true"
+                    android:layout_marginBottom="10dip"
                     android:layout_height="wrap_content">
 
         <FrameLayout android:layout_width="wrap_content"
                      android:layout_centerInParent="true"
                      android:layout_height="wrap_content">
 
-        <ImageView android:layout_width="100dip"
-                   android:layout_height="100dip"
+        <ImageView android:layout_width="200dip"
+                   android:layout_height="200dip"
                    android:background="@drawable/image_box_enabled"
                    android:visibility="gone"
                    android:id="@+id/choosenImageView"/>
@@ -53,6 +54,8 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="25dip"
+            android:layout_marginTop="20dip"
             android:id="@+id/textView" android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"/>
 </RelativeLayout>

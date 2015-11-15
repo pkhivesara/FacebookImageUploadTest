@@ -9,6 +9,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/congrats"
+            android:textSize="20dip"
+            android:layout_marginTop="25dip"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:id="@+id/congrats_textview"/>
@@ -16,11 +18,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/post_complete"
+            android:textSize="20dip"
             android:layout_centerInParent="true"
             android:id="@+id/message_textview" />
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20dip"
+            android:layout_marginBottom="12dip"
             android:text="@string/done"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
