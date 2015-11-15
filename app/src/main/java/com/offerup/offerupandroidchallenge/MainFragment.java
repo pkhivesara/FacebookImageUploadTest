@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -138,7 +139,6 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
-        Bitmap captureBmp = null;
         switch (requestCode) {
             case 1:
                 if (resultCode == Activity.RESULT_OK && uri!=null) {
@@ -153,9 +153,9 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
                 if (resultCode == Activity.RESULT_OK) {
                     Uri selectedImage;
                     selectedImage = data.getData();
-                    doneButton.setVisibility(View.VISIBLE);
+
                     Picasso.with(getActivity()).load(selectedImage).resize(choosenImageView.getMeasuredWidth(), choosenImageView.getMeasuredHeight()).centerCrop().into(target);
-                    uploadImageButton.setEnabled(true);
+
 
                 }
                 break;
@@ -167,6 +167,8 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
         public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
             bitmapForFacebookUpload = bitmap;
             choosenImageView.setImageBitmap(bitmap);
+            doneButton.setVisibility(View.VISIBLE);
+            uploadImageButton.setEnabled(true);
 
         }
 
