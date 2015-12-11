@@ -1,11 +1,11 @@
 <resources>
-	<string name="app_name">OfferUp Android Challenge</string>
+	<string name="app_name">Camera TestApp</string>
 	<string name="action_settings">Settings</string>
-	<string name = "facebook_app_id">1094917333882557</string>
+	<string name = "facebook_app_id">356705301195904</string>
 	<string name="upload_image">UPLOAD IMAGE</string>
 	<string name="post_some_pictures">Let\'s Post Some Pictures!</string>
 	<string name="upload_to_facebook">UPLOAD TO FACEBOOK</string>
-	<string name="offerup_challenge">OfferUp Challenge</string>
+	<string name="offerup_challenge">Facebook Test</string>
 	<string name="congrats">!!! Congrats !!!</string>
 	<string name="post_complete">You\'re done! :D</string>
 	<string name="done">DONE</string>

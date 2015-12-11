@@ -141,6 +141,7 @@ public class MainFragment extends Fragment implements MainFragmentPresenter.Main
 
         @Override
         public void onError(FacebookException e) {
+            Log.d("@@@@","###");
         }
     };
 

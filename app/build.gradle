@@ -5,7 +5,7 @@ android {
 	buildToolsVersion "23.0.1"
 
 	defaultConfig {
-		applicationId "com.offerup.offerupandroidchallenge"
+		applicationId "com.example.cameraTest"
 		minSdkVersion 15
 		targetSdkVersion 23
 		versionCode 1
